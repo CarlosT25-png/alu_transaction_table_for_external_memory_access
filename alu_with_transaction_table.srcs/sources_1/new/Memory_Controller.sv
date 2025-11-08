@@ -97,6 +97,7 @@ module Memory_Controller #(
                 if (delay_cnt < READ_DELAY) begin
                     delay_cnt_next = delay_cnt + 1;
                 end else if (delay_cnt == READ_DELAY) begin
+                    o_mem_wait = 0;
                     o_mem_addr = internal_mem_addr;
                     o_mem_data = memory[internal_mem_addr];
                     next_state = IDLE;
