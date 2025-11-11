@@ -30,7 +30,7 @@ module Memory_Controller #(
     input logic i_mem_read, i_mem_write, // bit signal for indicating if its a read or write
     input logic [ADDR_WIDTH-1:0] i_mem_addr, // input memory address
     input logic [DATA_WIDTH-1:0] i_mem_data, // input memory data
-    output logic o_mem_wait, // to indicate if our memory is working on a write/reading
+    output logic o_mem_done, // to indicate if our memory is working on a write/reading
     output logic [ADDR_WIDTH-1: 0] o_mem_addr, // output memory address (For this project is needed to easily identify on the transaction table)
     output logic [DATA_WIDTH-1: 0] o_mem_data   // output memory return data
 );
@@ -64,6 +64,10 @@ module Memory_Controller #(
         else begin
             current_state <= next_state;
             delay_cnt <= delay_cnt_next;
+
+            if (i_mem_write) begin
+                memory[i_mem_addr[MEMORY_SIZE-1:0]] <= i_mem_data;
+            end
         end
     end
 
@@ -79,40 +83,33 @@ module Memory_Controller #(
         case (current_state)
             IDLE : begin
                 if(i_mem_read == 1) begin
-                    o_mem_wait = 0;
+                    o_mem_done = 0;
                     internal_mem_addr = i_mem_addr;
                     next_state = READ;
                 end else if (i_mem_write) begin
-                    o_mem_wait = 0;
+                    o_mem_done = 0;
 
                     internal_mem_addr = i_mem_addr;
                     internal_mem_data = i_mem_data;
                     next_state = WRITE;
                     already_written = 0;
                 end else
-                    o_mem_wait = 0;
+                    o_mem_done = 0;
             end
             READ : begin
-                o_mem_wait = 1;
+                o_mem_done = 0;
                 if (delay_cnt < READ_DELAY) begin
                     delay_cnt_next = delay_cnt + 1;
                 end else if (delay_cnt == READ_DELAY) begin
-                    o_mem_wait = 0;
+                    o_mem_done = 1;
                     o_mem_addr = internal_mem_addr;
-                    o_mem_data = memory[internal_mem_addr];
+                    o_mem_data = memory[internal_mem_addr[MEMORY_SIZE-1:0]];
                     next_state = IDLE;
                     delay_cnt_next = 0;
                 end
             end
             WRITE: begin
-                o_mem_wait = 1;
-                if(~already_written) begin
-                    memory[internal_mem_addr] = internal_mem_data;
-                    already_written = 1;
-                    next_state = IDLE;
-                end else
-                    next_state = IDLE;
-
+                next_state = IDLE;
             end
             default: next_state = IDLE;
         endcase

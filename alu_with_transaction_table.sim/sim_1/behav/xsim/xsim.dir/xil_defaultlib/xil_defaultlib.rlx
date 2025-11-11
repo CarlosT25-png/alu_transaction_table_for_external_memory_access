@@ -3,5 +3,7 @@
 May 22 2025
 00:13:55
 C:/Projects/VivadoProjects/alu_with_transaction_table/alu_with_transaction_table.sim/sim_1/behav/xsim/glbl.v,1741209010,verilog,,,,glbl,,uvm,,,,,,
-C:/Projects/VivadoProjects/alu_with_transaction_table/alu_with_transaction_table.srcs/sim_1/new/Memory_Controller_tb.sv,1762641687,systemVerilog,,,,Memory_Controller_tb,,uvm,../../../../../../../Xilinx/2025.1/Vivado/data/rsb/busdef,,,,,
-C:/Projects/VivadoProjects/alu_with_transaction_table/alu_with_transaction_table.srcs/sources_1/new/Memory_Controller.sv,1762642837,systemVerilog,,C:/Projects/VivadoProjects/alu_with_transaction_table/alu_with_transaction_table.srcs/sim_1/new/Memory_Controller_tb.sv,,Memory_Controller,,uvm,../../../../../../../Xilinx/2025.1/Vivado/data/rsb/busdef,,,,,
+C:/Projects/VivadoProjects/alu_with_transaction_table/alu_with_transaction_table.srcs/sim_1/new/Memory_Controller_tb.sv,1762826792,systemVerilog,,,,Memory_Controller_tb,,uvm,../../../../../../../Xilinx/2025.1/Vivado/data/rsb/busdef,,,,,
+C:/Projects/VivadoProjects/alu_with_transaction_table/alu_with_transaction_table.srcs/sim_1/new/Transaction_Table_tb.sv,1762829480,systemVerilog,,,,Transaction_Table_tb,,uvm,../../../../../../../Xilinx/2025.1/Vivado/data/rsb/busdef,,,,,
+C:/Projects/VivadoProjects/alu_with_transaction_table/alu_with_transaction_table.srcs/sources_1/new/Memory_Controller.sv,1762830612,systemVerilog,,C:/Projects/VivadoProjects/alu_with_transaction_table/alu_with_transaction_table.srcs/sources_1/new/Transaction_Table.sv,,Memory_Controller,,uvm,../../../../../../../Xilinx/2025.1/Vivado/data/rsb/busdef,,,,,
+C:/Projects/VivadoProjects/alu_with_transaction_table/alu_with_transaction_table.srcs/sources_1/new/Transaction_Table.sv,1762830986,systemVerilog,,C:/Projects/VivadoProjects/alu_with_transaction_table/alu_with_transaction_table.srcs/sim_1/new/Transaction_Table_tb.sv,,Transaction_Table,,uvm,../../../../../../../Xilinx/2025.1/Vivado/data/rsb/busdef,,,,,

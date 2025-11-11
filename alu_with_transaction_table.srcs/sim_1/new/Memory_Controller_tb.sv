@@ -24,7 +24,7 @@ module Memory_Controller_tb();
 
     logic clk, reset_n;
     logic mem_read, mem_write;
-    logic mem_wait;
+    logic mem_done;
     logic [31:0] mem_addr, i_mem_data, o_mem_addr, o_mem_data;
 
     Memory_Controller #(
@@ -39,7 +39,7 @@ module Memory_Controller_tb();
         .i_mem_write(mem_write),
         .i_mem_addr(mem_addr),
         .i_mem_data(i_mem_data),
-        .o_mem_wait(mem_wait),
+        .o_mem_done(mem_done),
         .o_mem_addr(o_mem_addr),
         .o_mem_data(o_mem_data)
     );
@@ -59,26 +59,51 @@ module Memory_Controller_tb();
         i_mem_data = 0;
 
         #20;
-        // perform a write 
+        
         reset_n = 1;
+        
+        @(posedge clk);
+        
+        // First write
         mem_write = 1;
         mem_addr = 32'h0000_0004;
         i_mem_data = 32'h8044_fe12;
 
         @(posedge clk);
-
         mem_write = 0;
+        
+        wait (mem_done == 1);
+        
+        @(posedge clk);
+
+        // second write
+        mem_write = 1;
+        mem_addr = 32'h0000_0008;
+        i_mem_data = 32'h8044_4444;
 
         @(posedge clk);
+        mem_write = 0;
+        
+        
+        @(posedge clk);
+        
         // perform a read of the same location
+        mem_addr = 32'h0000_0008;
         mem_read = 1;
         
-        #15;
-        
+        @(posedge clk);
         mem_read = 0;
 
-        #60;
+        wait (mem_done == 1);
         
+        @(posedge clk);
+        
+        if (o_mem_data == 32'h8044_fe12) begin
+            $display("TEST PASSED: Read correct data %h", o_mem_data);
+        end else begin
+            $display("TEST FAILED: Read incorrect data %h", o_mem_data);
+        end
+
         #20;
 
         $finish;

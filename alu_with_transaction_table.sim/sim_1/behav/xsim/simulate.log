@@ -1,2 +1,34 @@
 Time resolution is 1 ps
-$finish called at time : 130 ns : File "C:/Projects/VivadoProjects/alu_with_transaction_table/alu_with_transaction_table.srcs/sim_1/new/Memory_Controller_tb.sv" Line 84
+Values for i_mem_data and transaction table reg accumulator
+         4
+         0
+         5
+Values for i_mem_data and transaction table reg accumulator
+         4
+         5
+         5
+Values for i_mem_data and transaction table reg accumulator
+         8
+         0
+         3
+Values for i_mem_data and transaction table reg accumulator
+         8
+         3
+         3
+Values for i_mem_data and transaction table reg accumulator
+         4
+         5
+         9
+Values for i_mem_data and transaction table reg accumulator
+         4
+        14
+         9
+Values for i_mem_data and transaction table reg accumulator
+         8
+         3
+         5
+Values for i_mem_data and transaction table reg accumulator
+         8
+         8
+         5
+$finish called at time : 465 ns : File "C:/Projects/VivadoProjects/alu_with_transaction_table/alu_with_transaction_table.srcs/sim_1/new/Transaction_Table_tb.sv" Line 129
