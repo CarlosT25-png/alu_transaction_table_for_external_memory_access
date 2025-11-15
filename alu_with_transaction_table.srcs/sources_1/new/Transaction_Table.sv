@@ -36,7 +36,7 @@ module Transaction_Table #(
     input logic [DATA_WIDTH-1:0] i_request_data,
     input logic [OP_CODE_WIDTH-1:0] i_request_op_code, // we'll only support ADD & SUB for this project
 
-    // input signals from memory
+    // input signals from memory (Return Values)
     input logic i_mem_done,
     input logic [DATA_WIDTH-1:0] i_mem_data,
     input logic [ADDR_WIDTH-1:0] i_mem_addr,
@@ -48,7 +48,7 @@ module Transaction_Table #(
     output logic [DATA_WIDTH-1:0] o_request_result,
     output logic o_request_done,
 
-    // outputs for the memory
+    // outputs for the memory (ALU -> Memory Controller)
     output logic o_mem_read,
     output logic o_mem_write,
     output logic [ADDR_WIDTH-1:0] o_mem_addr,
