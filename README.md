@@ -30,3 +30,9 @@ This 1.81x speedup directly confirms that for workloads where flow collisions ar
 ## Simulation Waveforms
 
 Below is the waveform showing how the Proposed ALU accepts multiple requests even while the memory interface is busy, this is proof of the non-blocking aggregation logic.
+
+[Waveform Start](alu-1.png)!
+[Waveform End](alu-2.png)!
+
+Sequence detail
+[Waveform Detail](alu-3.png)!
